@@ -21,7 +21,12 @@ public class PruebasInterfaz {
         ventana.setVisible(true);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        //########---Submenus---#######
+        /*
+         *  #############################
+         *  ########---Submenus---#######
+         *  #############################
+         */
+        
         JPanel MenuPrincipal = new JPanel();
         MenuPrincipal.setBounds(0, 0, 1080, 720);
         MenuPrincipal.setBackground(Color.getHSBColor(167, 34, 81));
@@ -68,7 +73,9 @@ public class PruebasInterfaz {
         MenuRegistrarAdmin.setLayout(null);
         
         /*
+         *  #######################################################
          *  ###########---Componentes MenuPrincipal---#############
+         *  #######################################################
          */
         
         JButton botonRegistrarCliente = new JButton("Registrar cliente");
@@ -78,11 +85,16 @@ public class PruebasInterfaz {
             ventana.add(MenuRegistrarCliente);
             MenuRegistrarCliente.setVisible(true);
             ventana.remove(MenuPrincipal);
-            
         });
         
         JButton botonAgregarVehiculo = new JButton("Agregar vehículo");
         botonAgregarVehiculo.setBounds(285, 530, 245, 50);
+        botonAgregarVehiculo.addActionListener((ActionEvent e) -> {
+            MenuPrincipal.setVisible(false);
+            ventana.add(MenuAgregarVehiculo);
+            MenuAgregarVehiculo.setVisible(true);
+            ventana.remove(MenuPrincipal);
+        });
         
         JButton botonRegistrarEmpresa = new JButton("Registrar empresa");
         botonRegistrarEmpresa.setBounds(550, 530, 245, 50);
@@ -118,7 +130,7 @@ public class PruebasInterfaz {
          */
         
         JPanel CuadroRegistrarCliente = new JPanel();
-        CuadroRegistrarCliente.setBounds(200, 110, 500, 500);
+        CuadroRegistrarCliente.setBounds(290, 110, 500, 500);
         float[] celestico = Color.RGBtoHSB(107, 255, 208, null);
         CuadroRegistrarCliente.setBackground(Color.getHSBColor(celestico[0], celestico[1], celestico[2]));
         CuadroRegistrarCliente.setLayout(null);
@@ -135,6 +147,7 @@ public class PruebasInterfaz {
             MenuPrincipal.setVisible(true);
             ventana.remove(MenuRegistrarCliente);
         });
+        
         JButton BotonRegistrarCliente = new JButton("Registrar");
         BotonRegistrarCliente.setBounds(395, 480, 100, 15);
         
@@ -208,6 +221,9 @@ public class PruebasInterfaz {
         BuscarClienteFoto.setBounds(380, 310, 100, 15);
         JTextField RutaClienteFoto = new JTextField();
         RutaClienteFoto.setBounds(150, 310, 220, 15);
+        RutaClienteFoto.setEditable(false);
+        
+        //----------------------------------------------------------------------
         
         CuadroRegistrarCliente.add(TitleRegistrarCliente);
         CuadroRegistrarCliente.add(VolverRegistrarCliente);
@@ -239,8 +255,152 @@ public class PruebasInterfaz {
         CuadroRegistrarCliente.add(TextClienteExpiracionAno);
         
         /*
-         *  ###########---Componentes MenuPrincipal---#############
+         *  ###############################################################
+         *  ###########---Componentes MenuAgregarVehiculo---#############
+         *  ###############################################################
          */
+        
+        JPanel CuadroAgregarVehiculo = new JPanel();
+        CuadroAgregarVehiculo.setBounds(190, 110, 700, 500);
+        float[] unColor = Color.RGBtoHSB(107, 208, 255, null);
+        CuadroAgregarVehiculo.setBackground(Color.getHSBColor(unColor[0], unColor[1], unColor[2]));
+        CuadroAgregarVehiculo.setLayout(null);
+        
+        String estilo[] = {"Compacto", "Pickup", "Intermedio",
+                           "SUV", "Mini-van", "Convertible económico"};
+        
+        String transmisión[] = {"Automático", "Manual"};
+        
+        JLabel TitleAgregarVehiculo = new JLabel("Agregar Vehículo");
+        TitleAgregarVehiculo.setBounds(300, 5, 500, 20);
+        JButton VolverAgregarVehiculo = new JButton("Volver");
+        VolverAgregarVehiculo.setBounds(5, 480, 100, 15);
+        VolverAgregarVehiculo.addActionListener((ActionEvent e) -> {
+            MenuAgregarVehiculo.setVisible(false);
+            ventana.add(MenuPrincipal);
+            MenuPrincipal.setVisible(true);
+            ventana.remove(MenuAgregarVehiculo);
+        });
+        
+        JButton BotonAgregarVehiculo = new JButton("Agregar");
+        BotonAgregarVehiculo.setBounds(595, 480, 100, 15);
+        
+        JLabel LabelVehiculoPlaca = new JLabel("Placa");
+        LabelVehiculoPlaca.setBounds(5, 50, 400, 15);
+        JTextField TextVehiculoPlaca = new JTextField();
+        TextVehiculoPlaca.setBounds(150, 50, 150, 16);
+        
+        JLabel LabelVehiculoMarca = new JLabel("Marca");
+        LabelVehiculoMarca.setBounds(355, 50, 400, 15);
+        JTextField TextVehiculoMarca = new JTextField();
+        TextVehiculoMarca.setBounds(500, 50, 150, 16);
+        
+        JLabel LabelVehiculoEstilo = new JLabel("Estilo");
+        LabelVehiculoEstilo.setBounds(5, 70, 400, 15);
+        JComboBox TextVehiculoEstilo = new JComboBox(estilo);
+        TextVehiculoEstilo.setBounds(150, 70, 150, 16);
+        
+        JLabel LabelVehiculoSucursal = new JLabel("Sucursal");
+        LabelVehiculoSucursal.setBounds(355, 70, 400, 15);
+        JTextField TextVehiculoSucursal = new JTextField();
+        TextVehiculoSucursal.setBounds(500, 70, 150, 16);
+        
+        JLabel LabelVehiculoColor = new JLabel("Color");
+        LabelVehiculoColor.setBounds(5, 90, 400, 15);
+        JTextField TextVehiculoColor = new JTextField();
+        TextVehiculoColor.setBounds(150, 90, 150, 16);
+        
+        JLabel LabelVehiculoCapacidad = new JLabel("Capacidad");
+        LabelVehiculoCapacidad.setBounds(355, 90, 400, 15);
+        JTextField TextVehiculoCapacidad = new JTextField();
+        TextVehiculoCapacidad.setBounds(500, 90, 150, 16);
+        
+        JLabel LabelVehiculoPuertas = new JLabel("Numero de puertas");
+        LabelVehiculoPuertas.setBounds(5, 110, 400, 15);
+        JTextField TextVehiculoPuertas = new JTextField();
+        TextVehiculoPuertas.setBounds(150, 110, 150, 16);
+        
+        JLabel LabelVehiculoMaletas = new JLabel("Capacidad de maletas");
+        LabelVehiculoMaletas.setBounds(355, 110, 400, 15);
+        JTextField TextVehiculoMaletas = new JTextField();
+        TextVehiculoMaletas.setBounds(500, 110, 150, 16);
+        
+        JLabel LabelVehiculoFabricacion = new JLabel("Año de fabricación");
+        LabelVehiculoFabricacion.setBounds(5, 130, 400, 15);
+        JTextField TextVehiculoFabricacion = new JTextField();
+        TextVehiculoFabricacion.setBounds(150, 130, 150, 16);
+        
+        JLabel LabelVehiculoVIN = new JLabel("Numero de Chasis"); //NumeroVin
+        LabelVehiculoVIN.setBounds(355, 130, 400, 15);
+        JTextField TextVehiculoVIN = new JTextField();
+        TextVehiculoVIN.setBounds(500, 130, 150, 16);
+        
+        JLabel LabelVehiculoTransmision = new JLabel("Transmisión");
+        LabelVehiculoTransmision.setBounds(5, 150, 400, 15);
+        JComboBox TextVehiculoTransmision = new JComboBox(transmisión);
+        TextVehiculoTransmision.setBounds(150, 150, 150, 16);
+        
+        JLabel LabelVehiculoKilometraje = new JLabel("Kilometraje");
+        LabelVehiculoKilometraje.setBounds(355, 150, 400, 15);
+        JTextField TextVehiculoKilometraje = new JTextField();
+        TextVehiculoKilometraje.setBounds(500, 150, 150, 16);
+        
+        JLabel LabelVehiculoAlquiler = new JLabel("Costo de Alquiler");
+        LabelVehiculoAlquiler.setBounds(5, 170, 400, 15);
+        JTextField TextVehiculoAlquiler = new JTextField();
+        TextVehiculoAlquiler.setBounds(150, 170, 150, 16);
+        
+        JLabel LabelVehiculoMPG = new JLabel("MPG (Millas por Galón)");
+        LabelVehiculoMPG.setBounds(355, 170, 400, 15);
+        JTextField TextVehiculoMPG = new JTextField();
+        TextVehiculoMPG.setBounds(500, 170, 150, 16);
+        
+        JLabel LabelVehiculoFoto = new JLabel("Fotografía del vehículo");
+        LabelVehiculoFoto.setBounds(5, 190, 400, 15);
+        JButton BuscarVehiculoFoto = new JButton("Buscar...");
+        BuscarVehiculoFoto.setBounds(500, 190, 100, 15);
+        JTextField RutaVehiculoFoto = new JTextField();
+        RutaVehiculoFoto.setBounds(150, 190, 330, 16);
+        RutaVehiculoFoto.setEditable(false);
+        
+        CuadroAgregarVehiculo.add(TitleAgregarVehiculo);
+        CuadroAgregarVehiculo.add(LabelVehiculoPlaca);
+        CuadroAgregarVehiculo.add(TextVehiculoPlaca);
+        CuadroAgregarVehiculo.add(LabelVehiculoMarca);
+        CuadroAgregarVehiculo.add(TextVehiculoMarca);
+        CuadroAgregarVehiculo.add(LabelVehiculoFabricacion);
+        CuadroAgregarVehiculo.add(TextVehiculoFabricacion);
+        CuadroAgregarVehiculo.add(LabelVehiculoEstilo);
+        CuadroAgregarVehiculo.add(TextVehiculoEstilo);
+        CuadroAgregarVehiculo.add(LabelVehiculoColor);
+        CuadroAgregarVehiculo.add(TextVehiculoColor);
+        CuadroAgregarVehiculo.add(LabelVehiculoCapacidad);
+        CuadroAgregarVehiculo.add(TextVehiculoCapacidad);
+        CuadroAgregarVehiculo.add(LabelVehiculoKilometraje);
+        CuadroAgregarVehiculo.add(TextVehiculoKilometraje);
+        CuadroAgregarVehiculo.add(LabelVehiculoPuertas);
+        CuadroAgregarVehiculo.add(TextVehiculoPuertas);
+        CuadroAgregarVehiculo.add(LabelVehiculoVIN);
+        CuadroAgregarVehiculo.add(TextVehiculoVIN);
+        CuadroAgregarVehiculo.add(LabelVehiculoMPG);
+        CuadroAgregarVehiculo.add(TextVehiculoMPG);
+        CuadroAgregarVehiculo.add(LabelVehiculoSucursal);
+        CuadroAgregarVehiculo.add(TextVehiculoSucursal);
+        CuadroAgregarVehiculo.add(LabelVehiculoAlquiler);
+        CuadroAgregarVehiculo.add(TextVehiculoAlquiler);
+        CuadroAgregarVehiculo.add(LabelVehiculoMaletas);
+        CuadroAgregarVehiculo.add(TextVehiculoMaletas);
+        CuadroAgregarVehiculo.add(LabelVehiculoTransmision);
+        CuadroAgregarVehiculo.add(TextVehiculoTransmision);
+        CuadroAgregarVehiculo.add(LabelVehiculoFoto);
+        CuadroAgregarVehiculo.add(BuscarVehiculoFoto);
+        CuadroAgregarVehiculo.add(RutaVehiculoFoto);
+        CuadroAgregarVehiculo.add(VolverAgregarVehiculo);
+        CuadroAgregarVehiculo.add(BotonAgregarVehiculo);
+        
+        MenuAgregarVehiculo.add(CuadroAgregarVehiculo);
+        
+        
         ventana.add(MenuPrincipal);
     }
     
