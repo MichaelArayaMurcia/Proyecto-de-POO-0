@@ -98,21 +98,57 @@ public class PruebasInterfaz {
         
         JButton botonRegistrarEmpresa = new JButton("Registrar empresa");
         botonRegistrarEmpresa.setBounds(550, 530, 245, 50);
+        botonRegistrarEmpresa.addActionListener((ActionEvent e) -> {
+            MenuPrincipal.setVisible(false);
+            ventana.add(MenuRegistrarEmpresa);
+            MenuRegistrarEmpresa.setVisible(true);
+            ventana.remove(MenuPrincipal);
+        });
         
-        JButton botonRegistrarMantenimiento = new JButton("Registrar mantenimiento");
+        JButton botonRegistrarMantenimiento = new JButton("Registrar servicio de mantenimiento");
         botonRegistrarMantenimiento.setBounds(815, 530, 245, 50);
+        botonRegistrarMantenimiento.addActionListener((ActionEvent e) -> {
+            MenuPrincipal.setVisible(false);
+            ventana.add(MenuRegistrarMantenimiento);
+            MenuRegistrarMantenimiento.setVisible(true);
+            ventana.remove(MenuPrincipal);
+        });
         
         JButton botonEditarVehiculo = new JButton("Editar vehiculo");
         botonEditarVehiculo.setBounds(20, 600, 245, 50);
+        botonEditarVehiculo.addActionListener((ActionEvent e) -> {
+            MenuPrincipal.setVisible(false);
+            ventana.add(MenuEditarVehiculo);
+            MenuEditarVehiculo.setVisible(true);
+            ventana.remove(MenuPrincipal);
+        });
         
         JButton botonHacerReserva = new JButton("Hacer una reserva");
         botonHacerReserva.setBounds(285, 600, 245, 50);
+        botonHacerReserva.addActionListener((ActionEvent e) -> {
+            MenuPrincipal.setVisible(false);
+            ventana.add(MenuHacerReserva);
+            MenuHacerReserva.setVisible(true);
+            ventana.remove(MenuPrincipal);
+        });
         
         JButton botonConsultarReserva = new JButton("Consultar una reserva");
         botonConsultarReserva.setBounds(550, 600, 245, 50);
+        botonConsultarReserva.addActionListener((ActionEvent e) -> {
+            MenuPrincipal.setVisible(false);
+            ventana.add(MenuConsultarReserva);
+            MenuConsultarReserva.setVisible(true);
+            ventana.remove(MenuPrincipal);
+        });
         
         JButton botonRegistrarAdmin = new JButton("Registrar usuario 'Servicio al cliente'");
         botonRegistrarAdmin.setBounds(815, 600, 245, 50);
+        botonRegistrarAdmin.addActionListener((ActionEvent e) -> {
+            MenuPrincipal.setVisible(false);
+            ventana.add(MenuRegistrarAdmin);
+            MenuRegistrarAdmin.setVisible(true);
+            ventana.remove(MenuPrincipal);
+        });
         
         MenuPrincipal.add(botonRegistrarCliente);
         MenuPrincipal.add(botonAgregarVehiculo);
@@ -256,7 +292,7 @@ public class PruebasInterfaz {
         
         /*
          *  ###############################################################
-         *  ###########---Componentes MenuAgregarVehiculo---#############
+         *  ###########---Componentes MenuAgregarVehiculo---###############
          *  ###############################################################
          */
         
@@ -363,6 +399,8 @@ public class PruebasInterfaz {
         RutaVehiculoFoto.setBounds(150, 190, 330, 16);
         RutaVehiculoFoto.setEditable(false);
         
+        //---------------------------------------------------------------------
+        
         CuadroAgregarVehiculo.add(TitleAgregarVehiculo);
         CuadroAgregarVehiculo.add(LabelVehiculoPlaca);
         CuadroAgregarVehiculo.add(TextVehiculoPlaca);
@@ -400,6 +438,498 @@ public class PruebasInterfaz {
         
         MenuAgregarVehiculo.add(CuadroAgregarVehiculo);
         
+        /*  
+         *  ##############################################################
+         *  ###########---Componentes MenuRegistrarEmpresa---#############
+         *  ##############################################################
+         */
+        
+        JPanel CuadroRegistrarEmpresa = new JPanel();
+        CuadroRegistrarEmpresa.setBounds(340, 160, 400, 400);
+        float[] empresarial = Color.RGBtoHSB(107, 154, 255, null);
+        CuadroRegistrarEmpresa.setBackground(Color.getHSBColor(empresarial[0], empresarial[1], empresarial[2]));
+        CuadroRegistrarEmpresa.setLayout(null);
+        
+        MenuRegistrarEmpresa.add(CuadroRegistrarEmpresa);
+        
+        String provincias[] = {"San José", "Alajuela", "Cartago", "Heredia", "Guanacaste", "Puntarenas", "Limón"};
+        
+        JLabel TitleRegistrarEmpresa = new JLabel("Registrar Empresa");
+        TitleRegistrarEmpresa.setBounds(150, 5, 500, 20);
+        JButton VolverRegistrarEmpresa = new JButton("Volver");
+        VolverRegistrarEmpresa.setBounds(5, 380, 100, 15);
+        VolverRegistrarEmpresa.addActionListener((ActionEvent e) -> {
+            MenuRegistrarEmpresa.setVisible(false);
+            ventana.add(MenuPrincipal);
+            MenuPrincipal.setVisible(true);
+            ventana.remove(MenuRegistrarEmpresa);
+        });
+        
+        JButton BotonRegistrarEmpresa = new JButton("Registrar");
+        BotonRegistrarEmpresa.setBounds(295, 380, 100, 15);
+        
+        JLabel LabelEmpresaName = new JLabel("Nombre de la empresa");
+        LabelEmpresaName.setBounds(5, 50, 400, 15);
+        JTextField TextEmpresaName = new JTextField();
+        TextEmpresaName.setBounds(150, 50, 230, 16);
+        
+        JLabel LabelEmpresaRazon = new JLabel("Razón Social");
+        LabelEmpresaRazon.setBounds(5, 70, 400, 15);
+        JTextField TextEmpresaRazon = new JTextField();
+        TextEmpresaRazon.setBounds(150, 70, 230, 16);
+        
+        JLabel LabelEmpresaCedula = new JLabel("Cédula Jurídica");
+        LabelEmpresaCedula.setBounds(5, 90, 400, 15);
+        JTextField TextEmpresaCedula = new JTextField();
+        TextEmpresaCedula.setBounds(150, 90, 230, 16);
+        
+        JLabel LabelEmpresaTelefono = new JLabel("Telefono");
+        LabelEmpresaTelefono.setBounds(5, 110, 400, 15);
+        JTextField TextEmpresaTelefono = new JTextField();
+        TextEmpresaTelefono.setBounds(150, 110, 230, 16);
+        
+        JLabel LabelEmpresaDireccion = new JLabel("Dirección");
+        LabelEmpresaDireccion.setBounds(150, 135, 400, 15);
+        
+        JLabel LabelEmpresaProvincia = new JLabel("Provincia");
+        LabelEmpresaProvincia.setBounds(25, 160, 400, 15);
+        JComboBox TextEmpresaProvincia = new JComboBox(provincias);
+        TextEmpresaProvincia.setBounds(5, 180, 100, 16); 
+        
+        JLabel LabelEmpresaCanton = new JLabel("Cantón");
+        LabelEmpresaCanton.setBounds(155, 160, 400, 15);
+        JTextField TextEmpresaCanton = new JTextField();
+        TextEmpresaCanton.setBounds(110, 180, 130, 16);
+        
+        JLabel LabelEmpresaDistrito = new JLabel("Distrito");
+        LabelEmpresaDistrito.setBounds(290, 160, 400, 15);
+        JTextField TextEmpresaDistrito = new JTextField();
+        TextEmpresaDistrito.setBounds(250, 180, 130, 16);
+        
+        JLabel LabelEmpresaSenal = new JLabel("Señas");
+        LabelEmpresaSenal.setBounds(5, 210, 400, 15);
+        JTextArea TextEmpresaSenal = new JTextArea();
+        TextEmpresaSenal.setBounds(60, 210, 300, 112);
+        
+        //----------------------------------------------------------------------
+        
+        CuadroRegistrarEmpresa.add(TitleRegistrarEmpresa);
+        CuadroRegistrarEmpresa.add(VolverRegistrarEmpresa);
+        CuadroRegistrarEmpresa.add(BotonRegistrarEmpresa);
+        CuadroRegistrarEmpresa.add(LabelEmpresaName);
+        CuadroRegistrarEmpresa.add(TextEmpresaName);
+        CuadroRegistrarEmpresa.add(LabelEmpresaRazon);
+        CuadroRegistrarEmpresa.add(TextEmpresaRazon);
+        CuadroRegistrarEmpresa.add(LabelEmpresaCedula);
+        CuadroRegistrarEmpresa.add(TextEmpresaCedula);
+        CuadroRegistrarEmpresa.add(LabelEmpresaTelefono);
+        CuadroRegistrarEmpresa.add(TextEmpresaTelefono);
+        CuadroRegistrarEmpresa.add(LabelEmpresaDireccion);
+        CuadroRegistrarEmpresa.add(LabelEmpresaProvincia);
+        CuadroRegistrarEmpresa.add(TextEmpresaProvincia);
+        CuadroRegistrarEmpresa.add(LabelEmpresaCanton);
+        CuadroRegistrarEmpresa.add(TextEmpresaCanton);
+        CuadroRegistrarEmpresa.add(LabelEmpresaDistrito);
+        CuadroRegistrarEmpresa.add(TextEmpresaDistrito);
+        CuadroRegistrarEmpresa.add(LabelEmpresaSenal);
+        CuadroRegistrarEmpresa.add(TextEmpresaSenal);
+        
+        /*  
+         *  ####################################################################
+         *  ###########---Componentes MenuRegistrarMantenimiento---#############
+         *  ####################################################################
+         */
+        
+        JPanel CuadroRegistrarMantenimiento = new JPanel();
+        CuadroRegistrarMantenimiento.setBounds(340, 160, 400, 400);
+        float[] reparando = Color.RGBtoHSB(255, 144, 107, null);
+        CuadroRegistrarMantenimiento.setBackground(Color.getHSBColor(reparando[0], reparando[1], reparando[2]));
+        CuadroRegistrarMantenimiento.setLayout(null);
+        
+        MenuRegistrarMantenimiento.add(CuadroRegistrarMantenimiento);
+        
+        JLabel TitleRegistrarMantenimiento = new JLabel("Registrar Servicio de mantenimiento");
+        TitleRegistrarMantenimiento.setBounds(100, 5, 500, 20);
+        JButton VolverRegistrarMantenimiento = new JButton("Volver");
+        VolverRegistrarMantenimiento.setBounds(5, 380, 100, 15);
+        VolverRegistrarMantenimiento.addActionListener((ActionEvent e) -> {
+            MenuRegistrarMantenimiento.setVisible(false);
+            ventana.add(MenuPrincipal);
+            MenuPrincipal.setVisible(true);
+            ventana.remove(MenuRegistrarMantenimiento);
+        });
+        
+        JButton BotonRegistrarMantenimiento = new JButton("Registrar");
+        BotonRegistrarMantenimiento.setBounds(295, 380, 100, 15);
+        
+        String EmpresasEjemplo[] = {"Rent a Car", "La Toyota", "El Mecánico", "Otro mecánico", "La mutual"};
+        
+        String CarrosEjemplo[] = {"000000 - Placa - modelo", "000001 - Carro pruebas", "000002 - Carro bonito",
+                                  "000003 - Carro feito", "000004 - EL CARRO PERFECTO", "000005 - EL carrito feo"};
+        
+        String ServiceType[] = {"Preventivo", "Correctivo"};
+        
+        JLabel LabelMantenimientoID = new JLabel("Identificador del servicio");
+        LabelMantenimientoID.setBounds(5, 50, 400, 15);
+        JTextField TextMantenimientoID = new JTextField();
+        TextMantenimientoID.setBounds(150, 50, 230, 16);
+        
+        JLabel LabelMantenimientoEmpresa = new JLabel("Empresa a cargo");
+        LabelMantenimientoEmpresa.setBounds(5, 70, 400, 15);
+        JComboBox TextMantenimientoEmpresa = new JComboBox(EmpresasEjemplo);
+        TextMantenimientoEmpresa.setBounds(150, 70, 230, 16);
+        
+        JLabel LabelMantenimientoVehiculo = new JLabel("Vehiculo");
+        LabelMantenimientoVehiculo.setBounds(5, 90, 400, 15);
+        JComboBox TextMantenimientoVehiculo = new JComboBox(CarrosEjemplo);
+        TextMantenimientoVehiculo.setBounds(150, 90, 230, 16);
+        
+        JLabel LabelMantenimientoType = new JLabel("Tipo de servicio");
+        LabelMantenimientoType.setBounds(5, 110, 400, 15);
+        JComboBox TextMantenimientoType = new JComboBox(ServiceType);
+        TextMantenimientoType.setBounds(150, 110, 230, 16);
+        
+        JLabel LabelMantenimientoActividad = new JLabel("Actividad a realizar");
+        LabelMantenimientoActividad.setBounds(5, 130, 400, 15);
+        JTextField TextMantenimientoActividad = new JTextField();
+        TextMantenimientoActividad.setBounds(150, 130, 230, 16);
+        
+        JLabel LabelMantenimientoStart = new JLabel("Fecha de inicio                                    /                                     /");
+        LabelMantenimientoStart.setBounds(5, 150, 400, 15);
+        JComboBox TextMantenimientoStartDia = new JComboBox(Dia);
+        TextMantenimientoStartDia.setBounds(150, 150, 40, 16);
+        JComboBox TextMantenimientoStartMes = new JComboBox(Mes);
+        TextMantenimientoStartMes.setBounds(205, 150, 100, 16);
+        JComboBox TextMantenimientoStartAno = new JComboBox(AnoExpiracion);
+        TextMantenimientoStartAno.setBounds(320, 150, 60, 16);
+        
+        JLabel LabelMantenimientoFin = new JLabel("Fecha de finalización                        /                                      /");
+        LabelMantenimientoFin.setBounds(5, 170, 400, 15);
+        JComboBox TextMantenimientoFinDia = new JComboBox(Dia);
+        TextMantenimientoFinDia.setBounds(150, 170, 40, 16);
+        JComboBox TextMantenimientoFinMes = new JComboBox(Mes);
+        TextMantenimientoFinMes.setBounds(205, 170, 100, 16);
+        JComboBox TextMantenimientoFinAno = new JComboBox(AnoExpiracion);
+        TextMantenimientoFinAno.setBounds(320, 170, 60, 16);
+        
+        JLabel LabelMantenimientoMoney = new JLabel("Monto pagado");
+        LabelMantenimientoMoney.setBounds(5, 190, 400, 15);
+        JTextField TextMantenimientoMoney = new JTextField();
+        TextMantenimientoMoney.setBounds(150, 190, 230, 16);
+        
+        //----------------------------------------------------------------------
+        
+        CuadroRegistrarMantenimiento.add(TitleRegistrarMantenimiento);
+        CuadroRegistrarMantenimiento.add(VolverRegistrarMantenimiento);
+        CuadroRegistrarMantenimiento.add(BotonRegistrarMantenimiento);
+        CuadroRegistrarMantenimiento.add(LabelMantenimientoID);
+        CuadroRegistrarMantenimiento.add(TextMantenimientoID);
+        CuadroRegistrarMantenimiento.add(LabelMantenimientoEmpresa);
+        CuadroRegistrarMantenimiento.add(TextMantenimientoEmpresa);
+        CuadroRegistrarMantenimiento.add(LabelMantenimientoVehiculo);
+        CuadroRegistrarMantenimiento.add(TextMantenimientoVehiculo);
+        CuadroRegistrarMantenimiento.add(LabelMantenimientoType);
+        CuadroRegistrarMantenimiento.add(TextMantenimientoType);
+        CuadroRegistrarMantenimiento.add(LabelMantenimientoActividad);
+        CuadroRegistrarMantenimiento.add(TextMantenimientoActividad);
+        CuadroRegistrarMantenimiento.add(LabelMantenimientoStart);
+        CuadroRegistrarMantenimiento.add(TextMantenimientoStartDia);
+        CuadroRegistrarMantenimiento.add(TextMantenimientoStartMes);
+        CuadroRegistrarMantenimiento.add(TextMantenimientoStartAno);
+        CuadroRegistrarMantenimiento.add(LabelMantenimientoFin);
+        CuadroRegistrarMantenimiento.add(TextMantenimientoFinDia);
+        CuadroRegistrarMantenimiento.add(TextMantenimientoFinMes);
+        CuadroRegistrarMantenimiento.add(TextMantenimientoFinAno);
+        CuadroRegistrarMantenimiento.add(LabelMantenimientoMoney);
+        CuadroRegistrarMantenimiento.add(TextMantenimientoMoney);
+        
+        /*  
+         *  ############################################################
+         *  ###########---Componentes MenuEditarVehiculo---#############
+         *  ############################################################
+         */
+        
+        JPanel CuadroEditarVehiculo = new JPanel();
+        CuadroEditarVehiculo.setBounds(190, 110, 700, 500);
+        float[] moradito = Color.RGBtoHSB(146, 107, 255, null);
+        CuadroEditarVehiculo.setBackground(Color.getHSBColor(moradito[0], moradito[1], moradito[2]));
+        CuadroEditarVehiculo.setLayout(null);
+        
+        MenuEditarVehiculo.add(CuadroEditarVehiculo);
+        
+        JLabel TitleEditarVehiculo = new JLabel("Editar Vehículo");
+        TitleEditarVehiculo.setBounds(315, 5, 500, 20);
+        JButton VolverEditarVehiculo = new JButton("Volver");
+        VolverEditarVehiculo.setBounds(5, 480, 100, 15);
+        VolverEditarVehiculo.addActionListener((ActionEvent e) -> {
+            MenuEditarVehiculo.setVisible(false);
+            ventana.add(MenuPrincipal);
+            MenuPrincipal.setVisible(true);
+            ventana.remove(MenuEditarVehiculo);
+        });
+        
+        String Placas[] = {"000000", "000001", "000002", "000003", "000004", "000005"};
+        
+        JButton BotonEditarVehiculo = new JButton("Guardar cambios");
+        BotonEditarVehiculo.setBounds(545, 480, 150, 15);
+        
+        JLabel LabelEditarPlaca = new JLabel("Placa");
+        LabelEditarPlaca.setBounds(5, 50, 400, 15);
+        JComboBox TextEditarPlaca = new JComboBox(Placas);
+        TextEditarPlaca.setBounds(150, 50, 150, 16);
+        
+        JLabel LabelEditarMarca = new JLabel("Marca");
+        LabelEditarMarca.setBounds(355, 50, 400, 15);
+        JTextField TextEditarMarca = new JTextField();
+        TextEditarMarca.setBounds(500, 50, 150, 16);
+        
+        JLabel LabelEditarEstilo = new JLabel("Estilo");
+        LabelEditarEstilo.setBounds(5, 70, 400, 15);
+        JComboBox TextEditarEstilo = new JComboBox(estilo);
+        TextEditarEstilo.setBounds(150, 70, 150, 16);
+        
+        JLabel LabelEditarSucursal = new JLabel("Sucursal");
+        LabelEditarSucursal.setBounds(355, 70, 400, 15);
+        JTextField TextEditarSucursal = new JTextField();
+        TextEditarSucursal.setBounds(500, 70, 150, 16);
+        
+        JLabel LabelEditarColor = new JLabel("Color");
+        LabelEditarColor.setBounds(5, 90, 400, 15);
+        JTextField TextEditarColor = new JTextField();
+        TextEditarColor.setBounds(150, 90, 150, 16);
+        
+        JLabel LabelEditarCapacidad = new JLabel("Capacidad");
+        LabelEditarCapacidad.setBounds(355, 90, 400, 15);
+        JTextField TextEditarCapacidad = new JTextField();
+        TextEditarCapacidad.setBounds(500, 90, 150, 16);
+        
+        JLabel LabelEditarPuertas = new JLabel("Numero de puertas");
+        LabelEditarPuertas.setBounds(5, 110, 400, 15);
+        JTextField TextEditarPuertas = new JTextField();
+        TextEditarPuertas.setBounds(150, 110, 150, 16);
+        
+        JLabel LabelEditarMaletas = new JLabel("Capacidad de maletas");
+        LabelEditarMaletas.setBounds(355, 110, 400, 15);
+        JTextField TextEditarMaletas = new JTextField();
+        TextEditarMaletas.setBounds(500, 110, 150, 16);
+        
+        JLabel LabelEditarFabricacion = new JLabel("Año de fabricación");
+        LabelEditarFabricacion.setBounds(5, 130, 400, 15);
+        JTextField TextEditarFabricacion = new JTextField();
+        TextEditarFabricacion.setBounds(150, 130, 150, 16);
+        
+        JLabel LabelEditarVIN = new JLabel("Numero de Chasis"); //NumeroVin
+        LabelEditarVIN.setBounds(355, 130, 400, 15);
+        JTextField TextEditarVIN = new JTextField();
+        TextEditarVIN.setBounds(500, 130, 150, 16);
+        
+        JLabel LabelEditarTransmision = new JLabel("Transmisión");
+        LabelEditarTransmision.setBounds(5, 150, 400, 15);
+        JComboBox TextEditarTransmision = new JComboBox(transmisión);
+        TextEditarTransmision.setBounds(150, 150, 150, 16);
+        
+        JLabel LabelEditarKilometraje = new JLabel("Kilometraje");
+        LabelEditarKilometraje.setBounds(355, 150, 400, 15);
+        JTextField TextEditarKilometraje = new JTextField();
+        TextEditarKilometraje.setBounds(500, 150, 150, 16);
+        
+        JLabel LabelEditarAlquiler = new JLabel("Costo de Alquiler");
+        LabelEditarAlquiler.setBounds(5, 170, 400, 15);
+        JTextField TextEditarAlquiler = new JTextField();
+        TextEditarAlquiler.setBounds(150, 170, 150, 16);
+        
+        JLabel LabelEditarMPG = new JLabel("MPG (Millas por Galón)");
+        LabelEditarMPG.setBounds(355, 170, 400, 15);
+        JTextField TextEditarMPG = new JTextField();
+        TextEditarMPG.setBounds(500, 170, 150, 16);
+        
+        JLabel LabelEditarFoto = new JLabel("Fotografía del vehículo");
+        LabelEditarFoto.setBounds(5, 190, 400, 15);
+        JButton BuscarEditarFoto = new JButton("Buscar...");
+        BuscarEditarFoto.setBounds(500, 190, 100, 15);
+        JTextField RutaEditarFoto = new JTextField();
+        RutaEditarFoto.setBounds(150, 190, 330, 16);
+        RutaEditarFoto.setEditable(false);
+        
+        //---------------------------------------------------------------------
+        
+        CuadroEditarVehiculo.add(TitleEditarVehiculo);
+        CuadroEditarVehiculo.add(VolverEditarVehiculo);
+        CuadroEditarVehiculo.add(LabelEditarPlaca);
+        CuadroEditarVehiculo.add(TextEditarPlaca);
+        CuadroEditarVehiculo.add(LabelEditarMarca);
+        CuadroEditarVehiculo.add(TextEditarMarca);
+        CuadroEditarVehiculo.add(LabelEditarFabricacion);
+        CuadroEditarVehiculo.add(TextEditarFabricacion);
+        CuadroEditarVehiculo.add(LabelEditarEstilo);
+        CuadroEditarVehiculo.add(TextEditarEstilo);
+        CuadroEditarVehiculo.add(LabelEditarColor);
+        CuadroEditarVehiculo.add(TextEditarColor);
+        CuadroEditarVehiculo.add(LabelEditarCapacidad);
+        CuadroEditarVehiculo.add(TextEditarCapacidad);
+        CuadroEditarVehiculo.add(LabelEditarKilometraje);
+        CuadroEditarVehiculo.add(TextEditarKilometraje);
+        CuadroEditarVehiculo.add(LabelEditarPuertas);
+        CuadroEditarVehiculo.add(TextEditarPuertas);
+        CuadroEditarVehiculo.add(LabelEditarVIN);
+        CuadroEditarVehiculo.add(TextEditarVIN);
+        CuadroEditarVehiculo.add(LabelEditarMPG);
+        CuadroEditarVehiculo.add(TextEditarMPG);
+        CuadroEditarVehiculo.add(LabelEditarSucursal);
+        CuadroEditarVehiculo.add(TextEditarSucursal);
+        CuadroEditarVehiculo.add(LabelEditarAlquiler);
+        CuadroEditarVehiculo.add(TextEditarAlquiler);
+        CuadroEditarVehiculo.add(LabelEditarMaletas);
+        CuadroEditarVehiculo.add(TextEditarMaletas);
+        CuadroEditarVehiculo.add(LabelEditarTransmision);
+        CuadroEditarVehiculo.add(TextEditarTransmision);
+        CuadroEditarVehiculo.add(LabelEditarFoto);
+        CuadroEditarVehiculo.add(BuscarEditarFoto);
+        CuadroEditarVehiculo.add(RutaEditarFoto);
+        CuadroEditarVehiculo.add(VolverEditarVehiculo);
+        CuadroEditarVehiculo.add(BotonEditarVehiculo);
+        
+        /*  
+         *  ############################################################
+         *  ###########---Componentes MenuHacerReserva---#############
+         *  ############################################################
+         */
+        
+        JPanel CuadroHacerReserva = new JPanel();
+        CuadroHacerReserva.setBounds(340, 160, 400, 400);
+        float[] verdecito = Color.RGBtoHSB(109, 255, 107, null);
+        CuadroHacerReserva.setBackground(Color.getHSBColor(verdecito[0], verdecito[1], verdecito[2]));
+        CuadroHacerReserva.setLayout(null);
+        
+        MenuHacerReserva.add(CuadroHacerReserva);
+        
+        JLabel TitleHacerReserva = new JLabel("Realizar Reserva");
+        TitleHacerReserva.setBounds(150, 5, 500, 20);
+        JButton VolverHacerReserva = new JButton("Volver");
+        VolverHacerReserva.setBounds(5, 380, 100, 15);
+        VolverHacerReserva.addActionListener((ActionEvent e) -> {
+            MenuHacerReserva.setVisible(false);
+            ventana.add(MenuPrincipal);
+            MenuPrincipal.setVisible(true);
+            ventana.remove(MenuHacerReserva);
+        });
+        
+        //----------------------------------------------------------------------
+        
+        CuadroHacerReserva.add(TitleHacerReserva);
+        CuadroHacerReserva.add(VolverHacerReserva);
+        
+        /*  
+         *  ##############################################################
+         *  ###########---Componentes MenuConsultarReserva---#############
+         *  ##############################################################
+         */
+        
+        JPanel CuadroConsultarReserva = new JPanel();
+        CuadroConsultarReserva.setBounds(340, 160, 400, 400);
+        float[] limoncito = Color.RGBtoHSB(198, 255, 107, null);
+        CuadroConsultarReserva.setBackground(Color.getHSBColor(limoncito[0], limoncito[1], limoncito[2]));
+        CuadroConsultarReserva.setLayout(null);
+        
+        MenuConsultarReserva.add(CuadroConsultarReserva);
+        
+        JLabel TitleConsultarReserva = new JLabel("Consultar Reserva");
+        TitleConsultarReserva.setBounds(150, 5, 500, 20);
+        JButton VolverConsultarReserva = new JButton("Volver");
+        VolverConsultarReserva.setBounds(5, 380, 100, 15);
+        VolverConsultarReserva.addActionListener((ActionEvent e) -> {
+            MenuConsultarReserva.setVisible(false);
+            ventana.add(MenuPrincipal);
+            MenuPrincipal.setVisible(true);
+            ventana.remove(MenuConsultarReserva);
+        });
+        
+        //----------------------------------------------------------------------
+        
+        CuadroConsultarReserva.add(TitleConsultarReserva);
+        CuadroConsultarReserva.add(VolverConsultarReserva);
+        
+        /*  
+         *  ############################################################
+         *  ###########---Componentes MenuRegistrarAdmin---#############
+         *  ############################################################
+         */
+        
+        JPanel CuadroRegistrarAdmin = new JPanel();
+        CuadroRegistrarAdmin.setBounds(290, 110, 500, 500);
+        float[] rosa = Color.RGBtoHSB(255, 107, 248, null);
+        CuadroRegistrarAdmin.setBackground(Color.getHSBColor(rosa[0], rosa[1], rosa[2]));
+        CuadroRegistrarAdmin.setLayout(null);
+        
+        MenuRegistrarAdmin.add(CuadroRegistrarAdmin);
+        
+        JLabel TitleRegistrarAdmin = new JLabel("Registrar Usuario con rol de Servicio al cliente");
+        TitleRegistrarAdmin.setBounds(100, 5, 500, 20);
+        JButton VolverRegistrarAdmin = new JButton("Volver");
+        VolverRegistrarAdmin.setBounds(5, 480, 100, 15);
+        VolverRegistrarAdmin.addActionListener((ActionEvent e) -> {
+            MenuRegistrarAdmin.setVisible(false);
+            ventana.add(MenuPrincipal);
+            MenuPrincipal.setVisible(true);
+            ventana.remove(MenuRegistrarAdmin);
+        });
+        
+        JButton BotonRegistrarAdmin = new JButton("Registrar");
+        BotonRegistrarAdmin.setBounds(395, 480, 100, 15);
+        
+        JLabel LabelAdminNombre = new JLabel("Nombre Completo");
+        LabelAdminNombre.setBounds(5, 50, 400, 15);
+        JTextField TextAdminNombre = new JTextField();
+        TextAdminNombre.setBounds(150, 50, 330, 16);
+        
+        JLabel LabelAdminCedula = new JLabel("Cédula");
+        LabelAdminCedula.setBounds(5, 70, 400, 15);
+        JTextField TextAdminCedula = new JTextField();
+        TextAdminCedula.setBounds(150, 70, 330, 16);
+        
+        JLabel LabelAdminEmail = new JLabel("Correo electrónico");
+        LabelAdminEmail.setBounds(5, 90, 400, 15);
+        JTextField TextAdminEmail = new JTextField();
+        TextAdminEmail.setBounds(150, 90, 330, 16);
+        
+        JLabel LabelAdminTelefono = new JLabel("Número de teléfono");
+        LabelAdminTelefono.setBounds(5, 110, 400, 15);
+        JTextField TextAdminTelefono = new JTextField();
+        TextAdminTelefono.setBounds(150, 110, 330, 16);
+        
+        JLabel LabelAdminDireccion = new JLabel("Dirección exacta");
+        LabelAdminDireccion.setBounds(5, 130, 400, 15);
+        JTextArea TextAdminDireccion = new JTextArea();
+        TextAdminDireccion.setBounds(150, 130, 330, 96);
+        
+        JLabel LabelAdminFoto = new JLabel("Fotografía del usuario");
+        LabelAdminFoto.setBounds(5, 240, 400, 15);
+        JButton BuscarAdminFoto = new JButton("Buscar...");
+        BuscarAdminFoto.setBounds(380, 240, 100, 15);
+        JTextField RutaAdminFoto = new JTextField();
+        RutaAdminFoto.setBounds(150, 240, 220, 15);
+        RutaAdminFoto.setEditable(false);
+        
+        //----------------------------------------------------------------------
+        
+        CuadroRegistrarAdmin.add(BotonRegistrarAdmin);
+        CuadroRegistrarAdmin.add(LabelAdminNombre);
+        CuadroRegistrarAdmin.add(TextAdminNombre);
+        CuadroRegistrarAdmin.add(LabelAdminCedula);
+        CuadroRegistrarAdmin.add(TextAdminCedula);
+        CuadroRegistrarAdmin.add(LabelAdminDireccion);
+        CuadroRegistrarAdmin.add(TextAdminDireccion);
+        CuadroRegistrarAdmin.add(LabelAdminEmail);
+        CuadroRegistrarAdmin.add(TextAdminEmail);
+        CuadroRegistrarAdmin.add(LabelAdminTelefono);
+        CuadroRegistrarAdmin.add(TextAdminTelefono);
+        CuadroRegistrarAdmin.add(LabelAdminFoto);
+        CuadroRegistrarAdmin.add(BuscarAdminFoto);
+        CuadroRegistrarAdmin.add(RutaAdminFoto);
+        CuadroRegistrarAdmin.add(TitleRegistrarAdmin);
+        CuadroRegistrarAdmin.add(VolverRegistrarAdmin);
+        
+        //Instrucción final...
         
         ventana.add(MenuPrincipal);
     }
